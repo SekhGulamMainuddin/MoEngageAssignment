@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:title="@string/home"
+        android:icon="@drawable/baseline_home_24"
+        android:iconTint="@color/black"
+        app:showAsAction="always"/>
+    <item
+        android:id="@id/bookmarked"
+        android:title="@string/bookmarked"
+        android:icon="@drawable/baseline_bookmarks_24"
+        android:iconTint="@color/black"
+        app:showAsAction="always"/>
+</menu>

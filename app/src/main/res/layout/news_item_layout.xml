@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.sekhgmainuddin.assignmentmoengage.R"/>
+        <variable
+            name="data"
+            type="com.sekhgmainuddin.assignmentmoengage.data.dto.Article" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/newsCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:clickable="true"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="3dp"
+        app:strokeColor="#9A9A9A"
+        android:focusable="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/newsThumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{data.urlToImage ?? ` `}"
+                app:progressBar="@{progressBar}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/roundedImageView" />
+
+            <ImageButton
+                android:id="@+id/addOrRemoveFromBookMark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/newsThumbnail"
+                app:layout_constraintEnd_toEndOf="@id/newsThumbnail"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:elevation="20dp"
+                android:background="?attr/selectableItemBackground"
+                app:customRes="@{data.isBookmarked?R.drawable.baseline_bookmark_added_24:R.drawable.baseline_bookmark_add_24}"
+                app:customColor="@{data.isBookmarked?R.color.gold:R.color.white}"
+                />
+
+            <TextView
+                android:id="@+id/author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/author_background"
+                android:text="@{data.author}"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/newsThumbnail"
+                app:layout_constraintEnd_toEndOf="@id/newsThumbnail" />
+
+            <TextView
+                android:id="@+id/titleTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{data.title}"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/newsThumbnail" />
+
+            <TextView
+                android:id="@+id/descTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{data.description}"
+                android:textColor="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleTV"
+                />
+
+            <TextView
+                android:id="@+id/dateTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:layout_constraintTop_toTopOf="@id/newsThumbnail"
+                app:layout_constraintStart_toStartOf="@id/newsThumbnail"
+                android:textColor="@color/white"
+                app:date="@{data.publishedAt ?? ` `}"
+                android:background="@drawable/author_background"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/newsThumbnail"
+                app:layout_constraintBottom_toBottomOf="@id/newsThumbnail"
+                app:layout_constraintStart_toStartOf="@id/newsThumbnail"
+                app:layout_constraintEnd_toEndOf="@id/newsThumbnail"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
